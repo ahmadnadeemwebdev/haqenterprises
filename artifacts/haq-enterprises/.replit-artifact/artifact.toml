@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Haq Enterprises Landing Page"
+description = "Landing page for Haq Enterprises — a printing and packaging company in Qatar."
+version = "1.0.0"
+id = "artifacts/haq-enterprises"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25798
+
+[services.development]
+run = "pnpm --filter @workspace/haq-enterprises run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/haq-enterprises", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/haq-enterprises/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25798"
+BASE_PATH = "/"

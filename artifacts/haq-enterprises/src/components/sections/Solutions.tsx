@@ -65,7 +65,7 @@ export default function Solutions() {
 
               {/* Tag */}
               <div className="absolute top-4 left-4">
-                <span className="text-xs font-semibold text-[#1d1d1f]/60 bg-black/50 backdrop-blur-sm border border-[#1d1d1f]/20 rounded-full px-3 py-1">
+                <span className="text-xs font-semibold text-white/85 bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
                   {service.tag}
                 </span>
               </div>

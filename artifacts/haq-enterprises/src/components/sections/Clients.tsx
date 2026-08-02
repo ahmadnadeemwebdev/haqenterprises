@@ -14,8 +14,8 @@ const clients = [
   { name: 'AWAN Distribution', logo: '/images/logos/awan.png' },
 ];
 
-// Double for seamless loop
-const doubled = [...clients, ...clients];
+// Triple for seamless loop
+const tripled = [...clients, ...clients, ...clients];
 
 export default function Clients() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -26,10 +26,11 @@ export default function Clients() {
     let pos = 0;
     let raf: number;
 
+    // Slower speed: 0.3px per frame instead of 0.5
     const tick = () => {
-      pos += 0.5;
-      const half = track.scrollWidth / 2;
-      if (pos >= half) pos = 0;
+      pos += 0.3;
+      const third = track.scrollWidth / 3;
+      if (pos >= third) pos = 0;
       track.style.transform = `translateX(-${pos}px)`;
       raf = requestAnimationFrame(tick);
     };
@@ -38,9 +39,9 @@ export default function Clients() {
   }, []);
 
   return (
-    <section id="clients" className="bg-[#f5f5f7] py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
+    <section id="clients" className="bg-[#f5f5f7] py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-14 text-center">
+        <p className="text-[#1d1d1f]/50 text-xs font-semibold tracking-widest uppercase mb-3">
           Our Clients
         </p>
         <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-3">
@@ -54,21 +55,28 @@ export default function Clients() {
       {/* Ticker */}
       <div className="relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
 
         <div className="overflow-hidden">
-          <div ref={trackRef} className="flex items-center gap-10 will-change-transform" style={{ width: 'max-content' }}>
-            {doubled.map((client, i) => (
+          <div
+            ref={trackRef}
+            className="flex items-center gap-6 will-change-transform"
+            style={{ width: 'max-content' }}
+          >
+            {tripled.map((client, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-32 h-16 bg-white rounded-xl border border-black/6 flex items-center justify-center px-4 shadow-sm"
+                className="flex-shrink-0 w-44 h-24 bg-white rounded-2xl border border-black/6 flex flex-col items-center justify-center px-5 gap-2 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="max-h-9 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  className="max-h-10 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
                 />
+                <span className="text-[10px] font-medium text-[#1d1d1f]/40 text-center leading-tight">
+                  {client.name}
+                </span>
               </div>
             ))}
           </div>

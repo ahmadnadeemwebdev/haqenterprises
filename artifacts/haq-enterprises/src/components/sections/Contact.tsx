@@ -49,7 +49,7 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-14"
         >
-          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-white/45 text-xs font-semibold tracking-widest uppercase mb-3">
             Get In Touch
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
@@ -79,12 +79,12 @@ export default function Contact() {
                   rel="noreferrer"
                   className="flex items-center gap-4 bg-white/5 border border-white/8 rounded-xl p-4 hover:bg-white/8 hover:border-[#1d1d1f]/20 transition-all duration-200 group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#1d1d1f]/8 flex items-center justify-center flex-shrink-0">
-                    <Icon size={16} className="text-[#1d1d1f]/60" />
+                  <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <Icon size={16} className="text-white/70" />
                   </div>
                   <div>
                     <p className="text-white/45 text-xs mb-0.5">{item.label}</p>
-                    <p className="text-white text-sm font-medium group-hover:text-[#1d1d1f]/60 transition-colors">{item.value}</p>
+                    <p className="text-white text-sm font-medium group-hover:text-white/80 transition-colors">{item.value}</p>
                   </div>
                 </a>
               );
@@ -95,7 +95,7 @@ export default function Contact() {
               <p className="text-white/75 text-sm leading-relaxed">
                 "Let us bring your ideas to life through quality, precision, and innovation."
               </p>
-              <p className="text-[#1d1d1f]/60 text-xs mt-2 font-medium">— Talha Azeem, Founder & CEO</p>
+              <p className="text-white/45 text-xs mt-2 font-medium">— Talha Azeem, Founder & CEO</p>
             </div>
           </motion.div>
 
@@ -108,8 +108,8 @@ export default function Contact() {
           >
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center bg-white/5 border border-white/8 rounded-2xl p-10 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center mb-5">
-                  <Send size={24} className="text-[#1d1d1f]/60" />
+                <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-5">
+                  <Send size={24} className="text-white/60" />
                 </div>
                 <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
                 <p className="text-white/55 text-sm">We'll get back to you shortly. Thank you for trusting Haq Enterprises.</p>

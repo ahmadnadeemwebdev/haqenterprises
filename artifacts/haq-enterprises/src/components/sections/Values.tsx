@@ -64,8 +64,8 @@ export default function Values() {
                 transition={{ duration: 0.55, delay: i * 0.07, ease: 'easeOut' }}
                 className="group bg-[#f5f5f7] hover:bg-[#1d1d1f] rounded-2xl p-7 transition-colors duration-300"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#1d1d1f]/8 group-hover:bg-[#1d1d1f]/8 flex items-center justify-center mb-5 transition-colors duration-300">
-                  <Icon size={20} className="text-[#1d1d1f]/60" />
+                <div className="w-10 h-10 rounded-xl bg-[#1d1d1f]/8 group-hover:bg-white/10 flex items-center justify-center mb-5 transition-colors duration-300">
+                  <Icon size={20} className="text-[#1d1d1f]/60 group-hover:text-white/70 transition-colors duration-300" />
                 </div>
                 <h3 className="text-[#1d1d1f] group-hover:text-white font-bold text-lg mb-2 transition-colors duration-300">
                   {value.title}

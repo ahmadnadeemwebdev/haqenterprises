@@ -1,59 +1,62 @@
-import { motion } from 'framer-motion';
-import { useInView } from '@/hooks/use-in-view';
-import { useEffect, useRef, useState } from 'react';
-
-function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const [ref, inView] = useInView({ threshold: 0.5 });
-
-  useEffect(() => {
-    if (inView && !started) {
-      setStarted(true);
-      const duration = 1800;
-      const steps = 60;
-      const increment = target / steps;
-      let current = 0;
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) { setCount(target); clearInterval(timer); }
-        else setCount(Math.floor(current));
-      }, duration / steps);
-      return () => clearInterval(timer);
-    }
-  }, [inView, started, target]);
-
-  return <span ref={ref as any}>{count}{suffix}</span>;
-}
+import { useRef, useEffect, useState } from 'react';
 
 const stats = [
-  { value: 200, suffix: '+', label: 'Projects Delivered', sub: 'Across Qatar & the GCC' },
-  { value: 50,  suffix: '+', label: 'Corporate Clients',  sub: 'From SMEs to multinationals' },
-  { value: 5,   suffix: '+', label: 'Years of Excellence', sub: 'In print & packaging' },
-  { value: 100, suffix: '%', label: 'Quality Guaranteed', sub: 'Every order, every time' },
+  { value: 200, suffix: '+', label: 'Projects Delivered' },
+  { value: 50, suffix: '+', label: 'Corporate Clients' },
+  { value: 5, suffix: '+', label: 'Years Experience' },
+  { value: 100, suffix: '%', label: 'Quality Guaranteed' },
 ];
 
-export function StatsSection() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+function CountUp({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const duration = 1400;
+          const steps = 50;
+          const increment = target / steps;
+          let current = 0;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(current));
+            }
+          }, duration / steps);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target]);
 
   return (
-    <section className="py-20 bg-[#1d1d1f]">
-      <div ref={ref as any} className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
-          {stats.map((s, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#1d1d1f] flex flex-col items-center justify-center py-12 px-6 text-center"
-            >
-              <div className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-2">
-                <CountUp target={s.value} suffix={s.suffix} />
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+}
+
+export default function Stats() {
+  return (
+    <section className="bg-[#0f0f0f] py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-white/10">
+          {stats.map((stat) => (
+            <div key={stat.label} className="px-8 py-4 text-center first:pl-0 last:pr-0">
+              <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-1">
+                <CountUp target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-base font-semibold text-white/80 mb-1">{s.label}</div>
-              <div className="text-sm text-white/40 font-light">{s.sub}</div>
-            </motion.div>
+              <div className="text-white/50 text-sm">{stat.label}</div>
+            </div>
           ))}
         </div>
       </div>

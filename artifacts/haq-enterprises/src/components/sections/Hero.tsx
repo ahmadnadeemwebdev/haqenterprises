@@ -1,121 +1,84 @@
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-export function Hero() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
+export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section id="home" className="relative h-screen min-h-[640px] flex items-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1920&q=80"
-          alt="Premium packaging production"
+          src="/images/hero-bg.jpg"
+          alt="Haq Enterprises Corporate Events"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15"/>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
       </div>
 
-      <div className="relative z-10 w-full pb-20 md:pb-28">
-        <div className="container mx-auto px-6 max-w-7xl">
-
-          {/* Badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3 mb-6"
+      {/* Badges strip */}
+      <div className="absolute top-20 left-0 right-0 flex justify-center gap-3 px-6 z-10">
+        {['5+ Years Excellence', 'Corporate Events', 'Premium Packaging'].map((badge) => (
+          <span
+            key={badge}
+            className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-white/80 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3.5 py-1"
           >
-            {["ISO Quality Standards", "Eco-Friendly Production", "Qatar Based"].map((badge) => (
-              <span key={badge} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-medium text-white/80">
-                <CheckCircle className="w-3 h-3 text-white/60" />
-                {badge}
-              </span>
-            ))}
-          </motion.div>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+            {badge}
+          </span>
+        ))}
+      </div>
 
-          {/* Eyebrow */}
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-sm font-semibold tracking-[0.18em] uppercase text-white/50 mb-4"
-          >
-            Haq Enterprises · Printing & Packaging · Qatar
-          </motion.p>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
-            className="text-5xl md:text-7xl lg:text-[88px] font-bold text-white tracking-tight leading-[1.02] max-w-5xl mb-6"
-          >
-            Precision Printing.<br />
-            <span className="text-white/65">Modern Packaging.</span>
-          </motion.h1>
-
-          {/* Sub */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.22 }}
-            className="text-lg md:text-xl text-white/55 max-w-2xl mb-10 leading-relaxed font-light"
-          >
-            A full-service printing and packaging studio serving Qatar's most demanding brands. From corporate stationery and luxury gift boxes to large-format display and branded uniforms — all under one roof, delivered on time.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.32 }}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <Button
-              size="lg"
-              className="bg-white text-[#1d1d1f] hover:bg-white/92 rounded-full h-14 px-10 text-base font-semibold shadow-lg"
-              onClick={() => scrollTo('#giveaways')}
-            >
-              View All Services
-              <ArrowRight className="w-5 h-5 ml-1"/>
-            </Button>
-            <Button
-              size="lg"
-              variant="glass"
-              className="border-white/30 text-white hover:bg-white/10 h-14 px-10 text-base"
-              onClick={() => scrollTo('#contact')}
-            >
-              Request a Quote
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Stats */}
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-16">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.55, duration: 0.8 }}
-          className="container mx-auto px-6 max-w-7xl mt-16 pt-8 border-t border-white/15"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-2xl"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: "200+", label: "Projects Delivered" },
-              { value: "50+",  label: "Corporate Clients" },
-              { value: "5+",   label: "Years Experience" },
-              { value: "100%", label: "Quality Guaranteed" },
-            ].map((s, i) => (
-              <div key={i}>
-                <div className="text-2xl md:text-3xl font-bold text-white tracking-tight">{s.value}</div>
-                <div className="text-sm text-white/45 mt-0.5 tracking-wide">{s.label}</div>
-              </div>
-            ))}
+          <p className="text-[#c9a84c] text-sm font-semibold tracking-widest uppercase mb-4">
+            Haq Enterprises
+          </p>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
+            Premium Printing,
+            <br />
+            <span className="text-white/70">Packaging &amp; Events</span>
+          </h1>
+          <p className="text-white/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg">
+            Pakistan's trusted printing, packaging, and corporate events partner. From luxury branded packaging to large-scale conferences — all under one roof.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="#services"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#1d1d1f] text-sm font-semibold hover:bg-white/90 transition-colors duration-200"
+            >
+              Explore Services
+              <ArrowRight size={15} />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#c9a84c] text-white text-sm font-semibold hover:bg-[#b8963e] transition-colors duration-200"
+            >
+              Get a Quote
+            </a>
           </div>
         </motion.div>
       </div>
+
+      {/* Bottom scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+      >
+        <span className="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

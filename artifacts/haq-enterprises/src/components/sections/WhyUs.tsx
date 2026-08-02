@@ -1,83 +1,65 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, Recycle, Globe2, Palette, Headphones } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
-const reasons = [
-  {
-    icon: ShieldCheck,
-    title: 'ISO-Standard Quality',
-    description: 'Every order adheres to international quality standards. From substrate selection to final finishing, we never compromise.',
-  },
-  {
-    icon: Zap,
-    title: '48-Hour Rush Delivery',
-    description: 'Tight deadlines? Our rush service handles high-priority orders without sacrificing quality — ready when you need it.',
-  },
-  {
-    icon: Recycle,
-    title: 'Eco-Friendly Options',
-    description: 'FSC-certified paper, soy-based inks, biodegradable packaging materials — responsible printing for a sustainable future.',
-  },
-  {
-    icon: Palette,
-    title: 'In-House Design Team',
-    description: 'Our dedicated designers work with your brand guidelines to produce artwork, mockups, and samples before production begins.',
-  },
-  {
-    icon: Globe2,
-    title: 'Pan-Qatar Delivery',
-    description: 'We deliver anywhere in Qatar — Doha, Al Wakrah, Al Khor, Lusail, and all industrial zones. International shipping available.',
-  },
-  {
-    icon: Headphones,
-    title: 'Dedicated Account Manager',
-    description: 'Every client gets a dedicated point of contact who knows your brand, your preferences, and ensures every project runs smoothly.',
-  },
+const points = [
+  'State-of-the-art printing technology and equipment',
+  'End-to-end event management with seamless execution',
+  'Customised solutions tailored to every client\'s needs',
+  'Trusted by 50+ corporate clients across Pakistan',
+  'ISO quality standards with 100% quality guarantee',
+  'Eco-friendly production and sustainable practices',
 ];
 
-export function WhyUsSection() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+export default function WhyUs() {
+  const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-24 md:py-32 bg-white border-t border-[#f0f0f0]">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-          {/* Left: text */}
-          <div>
-            <p className="section-label mb-3">Why Choose Us</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] leading-tight tracking-tight mb-6">
-              The Complete Print & Pack Partner
+    <section ref={ref} className="bg-white py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+          >
+            <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+              Why Choose Us
+            </p>
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-5">
+              Quality You Can<br />
+              <span className="text-[#1d1d1f]/50">Count On</span>
             </h2>
-            <p className="text-[#6e6e73] text-lg font-light leading-relaxed mb-8">
-              Haq Enterprises is not just a printer — we are a full-service brand production partner. From concept to delivery, we handle every stage with precision, care, and a commitment to excellence that larger print houses simply cannot match.
+            <p className="text-[#1d1d1f]/55 text-base leading-relaxed mb-8">
+              With over 5 years of industry experience and a commitment to excellence, we've built lasting partnerships with some of Pakistan's most demanding brands.
             </p>
-            <p className="text-[#6e6e73] text-lg font-light leading-relaxed">
-              Based in Qatar and serving the GCC, we combine the agility of a boutique studio with the capacity and technology of a large-scale facility. Whether you need 50 custom gift boxes or 50,000 branded packaging units, we deliver with the same level of attention.
-            </p>
-          </div>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#c9a84c] transition-colors duration-300"
+            >
+              Work With Us
+            </a>
+          </motion.div>
 
-          {/* Right: feature grid */}
-          <div ref={ref as any} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {reasons.map((r, i) => {
-              const Icon = r.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.45, delay: i * 0.07 }}
-                  className="bg-[#f5f5f7] hover:bg-white rounded-xl p-5 card-shadow transition-colors duration-300 group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center mb-3 shadow-sm group-hover:shadow transition-shadow duration-300">
-                    <Icon className="w-4 h-4 text-[#1d1d1f]" strokeWidth={1.5} />
-                  </div>
-                  <h4 className="text-sm font-bold text-[#1d1d1f] mb-1">{r.title}</h4>
-                  <p className="text-xs text-[#6e6e73] leading-relaxed font-light">{r.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' }}
+            className="space-y-3"
+          >
+            {points.map((point, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 15 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.1 + i * 0.07 }}
+                className="flex items-start gap-3 bg-[#f5f5f7] rounded-xl px-5 py-4"
+              >
+                <CheckCircle2 size={18} className="text-[#c9a84c] flex-shrink-0 mt-0.5" />
+                <p className="text-[#1d1d1f] text-sm font-medium">{point}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

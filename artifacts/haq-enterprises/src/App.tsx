@@ -1,48 +1,37 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Toaster } from '@/components/ui/toaster';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/sections/Hero';
+import Stats from '@/components/sections/Stats';
+import CEO from '@/components/sections/CEO';
+import VisionMission from '@/components/sections/VisionMission';
+import Values from '@/components/sections/Values';
+import WhyUs from '@/components/sections/WhyUs';
+import Solutions from '@/components/sections/Solutions';
+import Portfolio from '@/components/sections/Portfolio';
+import Giveaways from '@/components/sections/Giveaways';
+import Process from '@/components/sections/Process';
+import Clients from '@/components/sections/Clients';
+import Contact from '@/components/sections/Contact';
 
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { Hero } from '@/components/sections/Hero';
-import { StatsSection } from '@/components/sections/Stats';
-import { ValuesSection } from '@/components/sections/Values';
-import { WhyUsSection } from '@/components/sections/WhyUs';
-import { SolutionsSection } from '@/components/sections/Solutions';
-import { ProcessSection } from '@/components/sections/Process';
-import { ClientsSection } from '@/components/sections/Clients';
-import { TestimonialsSection } from '@/components/sections/Testimonials';
-import { ContactSection } from '@/components/sections/Contact';
-
-const queryClient = new QueryClient();
-
-function Home() {
+export default function App() {
   return (
-    <main className="min-h-screen w-full bg-white text-[#1d1d1f]">
+    <div className="min-h-screen bg-white font-sans antialiased">
       <Header />
-      <Hero />
-      <StatsSection />
-      <ValuesSection />
-      <WhyUsSection />
-      <SolutionsSection />
-      <ProcessSection />
-      <ClientsSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <main>
+        <Hero />
+        <Stats />
+        <CEO />
+        <VisionMission />
+        <Values />
+        <WhyUs />
+        <Solutions />
+        <Portfolio />
+        <Giveaways />
+        <Process />
+        <Clients />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
-
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Home />
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-}
-
-export default App;

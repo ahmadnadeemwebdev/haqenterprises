@@ -1,96 +1,81 @@
 import { motion } from 'framer-motion';
-import { MessageSquare, PenLine, Factory, Truck } from 'lucide-react';
+import { MessageSquare, Lightbulb, Wrench, Trophy } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 const steps = [
   {
-    number: '01',
     icon: MessageSquare,
-    title: 'Consultation & Brief',
-    description:
-      "We begin every project with a deep understanding of your brand, goals, and requirements. Our team listens carefully to craft a strategy perfectly aligned with your vision.",
-    detail: ['Brand discovery session', 'Requirement scoping', 'Budget & timeline planning'],
+    step: '01',
+    title: 'Consultation',
+    description: 'We begin by understanding your vision, goals, and requirements through a detailed brief.',
   },
   {
-    number: '02',
-    icon: PenLine,
-    title: 'Design & Sampling',
-    description:
-      'Our in-house design team creates mockups, prototypes, and physical samples for your approval. We refine until every detail is exactly right — no shortcuts.',
-    detail: ['Custom artwork & mockups', 'Physical sample approval', 'Material selection'],
+    icon: Lightbulb,
+    step: '02',
+    title: 'Strategy & Design',
+    description: 'Our creative team develops a tailored plan and design concepts that align with your brand.',
   },
   {
-    number: '03',
-    icon: Factory,
-    title: 'Quality Production',
-    description:
-      'State-of-the-art machinery combined with rigorous quality checks at every stage ensures your order meets the highest international standards before it leaves our facility.',
-    detail: ['ISO-standard production', 'Multi-stage QC checks', 'Eco-friendly options available'],
+    icon: Wrench,
+    step: '03',
+    title: 'Production',
+    description: 'We execute with precision — from printing and packaging to event setup and logistics.',
   },
   {
-    number: '04',
-    icon: Truck,
-    title: 'Delivery & Support',
-    description:
-      'We deliver on time, every time. After delivery, our team remains available for post-project support, reorders, and any adjustments you may need.',
-    detail: ['On-time Qatar-wide delivery', 'Real-time order tracking', 'Post-delivery support'],
+    icon: Trophy,
+    step: '04',
+    title: 'Delivery',
+    description: 'On-time delivery with a quality check at every stage and your complete satisfaction guaranteed.',
   },
 ];
 
-export function ProcessSection() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+export default function Process() {
+  const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-[#f5f5f7]">
-      <div className="container mx-auto px-6 max-w-7xl">
-
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <p className="section-label mb-3">Our Process</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] leading-tight tracking-tight">
+    <section ref={ref} className="bg-[#f5f5f7] py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
             How We Work
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
+            Our Process
           </h2>
-          <p className="text-[#6e6e73] mt-4 font-light text-lg leading-relaxed">
-            A structured, transparent process — from your first call to the final delivery.
+          <p className="text-[#1d1d1f]/55 text-base max-w-md mx-auto">
+            A streamlined workflow ensuring quality and precision at every step.
           </p>
         </div>
 
-        <div ref={ref as any} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div className="relative">
           {/* Connector line */}
-          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-[#d2d2d7] z-0" />
+          <div className="hidden lg:block absolute top-10 left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="relative z-10 flex flex-col"
-              >
-                {/* Step icon circle */}
-                <div className="flex items-center mb-6">
-                  <div className="w-20 h-20 rounded-full bg-white card-shadow flex items-center justify-center relative border border-[#e8e8ed]">
-                    <Icon className="w-7 h-7 text-[#1d1d1f]" strokeWidth={1.5} />
-                    <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#1d1d1f] text-white text-[10px] font-bold flex items-center justify-center">
-                      {step.number.replace('0', '')}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.55, delay: i * 0.1, ease: 'easeOut' }}
+                  className="relative text-center"
+                >
+                  <div className="relative inline-flex flex-col items-center">
+                    <div className="w-20 h-20 rounded-2xl bg-white border border-black/8 shadow-sm flex items-center justify-center mb-5 mx-auto">
+                      <Icon size={26} className="text-[#c9a84c]" />
+                    </div>
+                    <span className="absolute -top-2 -right-2 text-[10px] font-bold text-[#c9a84c] bg-[#c9a84c]/10 rounded-full w-5 h-5 flex items-center justify-center">
+                      {step.step}
                     </span>
                   </div>
-                </div>
-
-                <h3 className="text-lg font-bold text-[#1d1d1f] mb-3 tracking-tight">{step.title}</h3>
-                <p className="text-[#6e6e73] text-sm leading-relaxed font-light mb-4">{step.description}</p>
-                <ul className="space-y-1.5">
-                  {step.detail.map((d, j) => (
-                    <li key={j} className="flex items-center gap-2 text-xs text-[#424245]">
-                      <span className="w-1 h-1 rounded-full bg-[#1d1d1f] flex-shrink-0" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
+                  <h3 className="font-bold text-[#1d1d1f] text-base mb-2">{step.title}</h3>
+                  <p className="text-[#1d1d1f]/55 text-sm leading-relaxed">{step.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

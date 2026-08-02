@@ -1,79 +1,53 @@
-export function Footer() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+const footerLinks = {
+  Services: ['Event Management', 'Conferences', 'Exhibitions', 'Product Launches', 'Customised Giveaways'],
+  Company: ['About Us', 'Our Clients', 'Corporate Events', 'Contact Us'],
+};
 
+export default function Footer() {
   return (
-    <footer className="bg-[#1d1d1f] pt-16 pb-8">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-
+    <footer className="bg-[#0f0f0f] text-white">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="text-xl font-bold tracking-[0.1em] text-white block mb-4 hover:text-white/80 transition-colors"
-            >
-              HAQ ENTERPRISES
-            </a>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs font-light">
-              Precision Printing & Modern Packaging Solutions for world-class brands.
+          <div className="md:col-span-2">
+            <img
+              src="/images/haq-logo.png"
+              alt="Haq Enterprises"
+              className="h-10 w-auto mb-4 brightness-0 invert"
+            />
+            <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+              A full-service printing, packaging, and corporate events company. Building solutions, delivering trust.
             </p>
+            <div className="mt-5 space-y-1.5">
+              <p className="text-white/60 text-sm">Haqenterprises777@gmail.com</p>
+              <p className="text-white/60 text-sm">+92 328 4865157</p>
+              <p className="text-white/60 text-sm">+92 322 4758424</p>
+              <p className="text-white/60 text-sm">www.haqenterprises.online</p>
+              <p className="text-white/60 text-sm">Pakistan</p>
+            </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-xs font-semibold tracking-[0.14em] text-white/40 uppercase mb-5">Quick Links</h4>
-            <ul className="space-y-3">
-              {['About', 'Core Values', 'Giveaways', 'Clients'].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      let href = link.toLowerCase().replace(' ', '-');
-                      if (href === 'about' || href === 'core-values') href = 'values';
-                      scrollTo(`#${href}`);
-                    }}
-                    className="text-white/50 hover:text-white transition-colors text-sm"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-xs font-semibold tracking-[0.14em] text-white/40 uppercase mb-5">Contact</h4>
-            <ul className="space-y-3 text-sm text-white/50">
-              <li>Qatar</li>
-              <li>
-                <a href="https://www.haqenterprises.online" target="_blank" rel="noreferrer"
-                  className="hover:text-white transition-colors">
-                  www.haqenterprises.online
-                </a>
-              </li>
-              <li>
-                <a href="mailto:contact@haqenterprises.online"
-                  className="hover:text-white transition-colors">
-                  contact@haqenterprises.online
-                </a>
-              </li>
-            </ul>
-          </div>
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-sm font-semibold text-white mb-4">{title}</h4>
+              <ul className="space-y-2.5">
+                {links.map((link) => (
+                  <li key={link}>
+                    <a href="#" className="text-white/55 text-sm hover:text-[#c9a84c] transition-colors duration-200">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/25 text-xs">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/40 text-xs">
             © {new Date().getFullYear()} Haq Enterprises. All rights reserved.
           </p>
-          <p className="text-white/20 text-xs tracking-widest uppercase">
-            Printing · Packaging · Branding
-          </p>
+          <p className="text-white/40 text-xs">www.haqenterprises.online</p>
         </div>
       </div>
     </footer>

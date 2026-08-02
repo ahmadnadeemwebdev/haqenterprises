@@ -1,111 +1,178 @@
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Send, Mail, Globe } from 'lucide-react';
-import { useInView } from '@/hooks/use-in-view';
 import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
+import { motion } from 'framer-motion';
+import { Mail, Phone, Globe, Send } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
 
-export function ContactSection() {
-  const [ref, inView] = useInView({ threshold: 0.15 });
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const contactInfo = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'Haqenterprises777@gmail.com',
+    href: 'mailto:Haqenterprises777@gmail.com',
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: '+92 328 4865157',
+    href: 'tel:+923284865157',
+  },
+  {
+    icon: Phone,
+    label: 'WhatsApp',
+    value: '+92 322 4758424',
+    href: 'tel:+923224758424',
+  },
+  {
+    icon: Globe,
+    label: 'Website',
+    value: 'www.haqenterprises.online',
+    href: 'https://www.haqenterprises.online',
+  },
+];
+
+export default function Contact() {
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({ title: "Message Sent", description: "We'll get back to you within 24 hours." });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    setSent(true);
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#f5f5f7]">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+    <section id="contact" ref={ref} className="bg-[#0f0f0f] py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-center mb-14"
+        >
+          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+            Get In Touch
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+            Let's Create Extraordinary<br />
+            <span className="text-white/50">Experiences Together</span>
+          </h2>
+          <p className="text-white/45 text-base max-w-lg mx-auto">
+            Ready to elevate your brand? Contact us today and let's bring your vision to life.
+          </p>
+        </motion.div>
 
-          {/* Left */}
-          <div ref={ref as any} className="flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ duration: 0.55 }}
-            >
-              <p className="section-label mb-3">Get In Touch</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] leading-tight tracking-tight mb-5">
-                Ready to Elevate<br />Your Brand?
-              </h2>
-              <p className="text-[#6e6e73] text-lg font-light leading-relaxed mb-10 max-w-sm">
-                Full-scale packaging overhaul or premium corporate gifts — our team delivers, every time.
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Contact info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="lg:col-span-2 space-y-4"
+          >
+            {contactInfo.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noreferrer"
+                  className="flex items-center gap-4 bg-white/5 border border-white/8 rounded-xl p-4 hover:bg-white/8 hover:border-[#c9a84c]/30 transition-all duration-200 group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-[#c9a84c]/15 flex items-center justify-center flex-shrink-0">
+                    <Icon size={16} className="text-[#c9a84c]" />
+                  </div>
+                  <div>
+                    <p className="text-white/45 text-xs mb-0.5">{item.label}</p>
+                    <p className="text-white text-sm font-medium group-hover:text-[#c9a84c] transition-colors">{item.value}</p>
+                  </div>
+                </a>
+              );
+            })}
+
+            <div className="mt-4 bg-white/5 border border-white/8 rounded-xl p-5">
+              <p className="text-white/45 text-xs mb-2">Our Promise</p>
+              <p className="text-white/75 text-sm leading-relaxed">
+                "Let us bring your ideas to life through quality, precision, and innovation."
               </p>
+              <p className="text-[#c9a84c] text-xs mt-2 font-medium">— Talha Azeem, Founder & CEO</p>
+            </div>
+          </motion.div>
 
-              <div className="space-y-4">
-                <a href="https://www.haqenterprises.online" target="_blank" rel="noreferrer"
-                  className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm flex-shrink-0 group-hover:shadow transition-shadow duration-300">
-                    <Globe className="w-4 h-4 text-[#424245]" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-[#424245] group-hover:text-[#1d1d1f] transition-colors text-sm font-medium">
-                    www.haqenterprises.online
-                  </span>
-                </a>
-
-                <a href="mailto:contact@haqenterprises.online"
-                  className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm flex-shrink-0 group-hover:shadow transition-shadow duration-300">
-                    <Mail className="w-4 h-4 text-[#424245]" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-[#424245] group-hover:text-[#1d1d1f] transition-colors text-sm font-medium">
-                    contact@haqenterprises.online
-                  </span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right: Form */}
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="bg-white rounded-2xl p-8 md:p-10 shadow-lg"
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+            className="lg:col-span-3"
           >
-            <h3 className="text-xl font-bold text-[#1d1d1f] mb-7 tracking-tight">Request a Quote</h3>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-xs font-semibold text-[#6e6e73] uppercase tracking-wider">Full Name</label>
-                  <Input id="name" required placeholder="John Doe"
-                    className="bg-[#f5f5f7] border-transparent focus-visible:ring-[#1d1d1f]/20 focus-visible:border-[#d2d2d7] h-11 text-[#1d1d1f] placeholder:text-[#a1a1a6]" />
+            {sent ? (
+              <div className="h-full flex flex-col items-center justify-center bg-white/5 border border-white/8 rounded-2xl p-10 text-center">
+                <div className="w-14 h-14 rounded-full bg-[#c9a84c]/20 flex items-center justify-center mb-5">
+                  <Send size={24} className="text-[#c9a84c]" />
                 </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xs font-semibold text-[#6e6e73] uppercase tracking-wider">Email</label>
-                  <Input id="email" type="email" required placeholder="john@company.com"
-                    className="bg-[#f5f5f7] border-transparent focus-visible:ring-[#1d1d1f]/20 focus-visible:border-[#d2d2d7] h-11 text-[#1d1d1f] placeholder:text-[#a1a1a6]" />
+                <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
+                <p className="text-white/55 text-sm">We'll get back to you shortly. Thank you for trusting Haq Enterprises.</p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white/5 border border-white/8 rounded-2xl p-7 lg:p-8 space-y-4"
+              >
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-white/55 text-xs mb-1.5">Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Your name"
+                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white/55 text-xs mb-1.5">Email</label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="your@email.com"
+                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="company" className="text-xs font-semibold text-[#6e6e73] uppercase tracking-wider">Company</label>
-                <Input id="company" required placeholder="Acme Corporation"
-                  className="bg-[#f5f5f7] border-transparent focus-visible:ring-[#1d1d1f]/20 focus-visible:border-[#d2d2d7] h-11 text-[#1d1d1f] placeholder:text-[#a1a1a6]" />
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="message" className="text-xs font-semibold text-[#6e6e73] uppercase tracking-wider">Project Details</label>
-                <Textarea id="message" required placeholder="Tell us about your printing or packaging needs..."
-                  className="bg-[#f5f5f7] border-transparent focus-visible:ring-[#1d1d1f]/20 focus-visible:border-[#d2d2d7] min-h-[110px] resize-none text-[#1d1d1f] placeholder:text-[#a1a1a6]" />
-              </div>
-
-              <Button type="submit" variant="goldGlow" className="w-full h-12 text-sm mt-1" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Submit Request"}
-                {!isSubmitting && <Send className="w-4 h-4 ml-1" />}
-              </Button>
-            </form>
+                <div>
+                  <label className="block text-white/55 text-xs mb-1.5">Company</label>
+                  <input
+                    type="text"
+                    value={form.company}
+                    onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    placeholder="Your company (optional)"
+                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-white/55 text-xs mb-1.5">Message</label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Tell us about your project..."
+                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-lg bg-[#c9a84c] text-white text-sm font-semibold hover:bg-[#b8963e] transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                  <Send size={15} />
+                  Send Message
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>

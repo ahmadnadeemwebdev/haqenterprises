@@ -1,75 +1,78 @@
 import { motion } from 'framer-motion';
-import { Printer, HeartHandshake, Leaf, Cpu, Eye, Medal } from 'lucide-react';
+import { Shield, Sparkles, Zap, Award, HeartHandshake, Users } from 'lucide-react';
 import { useInView } from '@/hooks/use-in-view';
 
 const values = [
   {
-    icon: Printer,
-    title: "Innovative Excellence",
-    description: "Creativity meets precision. We continuously invest in the latest printing technologies and creative talent to deliver results that genuinely stand out.",
+    icon: Shield,
+    title: 'Integrity',
+    description: 'Delivering premium-quality printing and packaging with precision and consistency in every project.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Creativity',
+    description: 'Transforming ideas into unique and unforgettable brand experiences that leave lasting impressions.',
+  },
+  {
+    icon: Zap,
+    title: 'Innovation',
+    description: 'Embracing fresh ideas and advanced technology to create impactful, modern solutions.',
+  },
+  {
+    icon: Award,
+    title: 'Excellence',
+    description: 'Delivering outstanding quality with precision in every event and every single project.',
   },
   {
     icon: HeartHandshake,
-    title: "Client-Centric Approach",
-    description: "Every client is a long-term partner. We dedicate a team to each account, ensuring your brand's specific requirements are deeply understood and always exceeded.",
+    title: 'Client Commitment',
+    description: 'Understanding every client\'s vision deeply and consistently exceeding their expectations.',
   },
   {
-    icon: Leaf,
-    title: "Sustainable Future",
-    description: "We actively choose FSC-certified materials, soy-based inks, and carbon-conscious production. Responsible printing is not optional — it's core to our identity.",
-  },
-  {
-    icon: Cpu,
-    title: "Technology-Driven",
-    description: "From digital proofing to automated quality checks, our facility is equipped with state-of-the-art machinery that guarantees consistency and speed at scale.",
-  },
-  {
-    icon: Eye,
-    title: "Uncompromising Quality",
-    description: "Every project goes through multiple quality control stages. We only release work that meets our exacting standards — no exceptions, no shortcuts.",
-  },
-  {
-    icon: Medal,
-    title: "On-Time, Every Time",
-    description: "Deadlines matter. We plan every production run with buffer time and transparent milestones, so your order arrives when it was promised.",
+    icon: Users,
+    title: 'Teamwork',
+    description: 'Collaborating with passion and expertise to ensure seamless execution from start to finish.',
   },
 ];
 
-export function ValuesSection() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+export default function Values() {
+  const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-white">
-      <div className="container mx-auto px-6 max-w-7xl">
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end mb-16">
-          <div>
-            <p className="section-label mb-3">Our Foundation</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1d1d1f] leading-tight tracking-tight">
-              Vision & Core Values
-            </h2>
-          </div>
-          <p className="text-[#6e6e73] text-lg font-light leading-relaxed max-w-lg">
-            Founded in Qatar, Haq Enterprises was built on a simple belief: every brand deserves print and packaging that reflects its true quality. Six principles guide everything we do.
+    <section ref={ref} className="bg-white py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+            The Foundation
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
+            Our Core Values
+          </h2>
+          <p className="text-[#1d1d1f]/55 text-base max-w-xl mx-auto">
+            The principles that guide every project, every partnership, and every promise we make.
           </p>
         </div>
 
-        <div ref={ref as any} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {values.map((item, index) => {
-            const Icon = item.icon;
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {values.map((value, i) => {
+            const Icon = value.icon;
             return (
               <motion.div
-                key={index}
+                key={value.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.07 }}
-                className="group bg-[#f5f5f7] hover:bg-white rounded-2xl p-8 flex flex-col card-shadow transition-colors duration-300 cursor-default"
+                transition={{ duration: 0.55, delay: i * 0.07, ease: 'easeOut' }}
+                className="group bg-[#f5f5f7] hover:bg-[#1d1d1f] rounded-2xl p-7 transition-colors duration-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:shadow transition-shadow duration-300">
-                  <Icon className="w-5 h-5 text-[#1d1d1f]" strokeWidth={1.5}/>
+                <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/15 group-hover:bg-[#c9a84c]/20 flex items-center justify-center mb-5 transition-colors duration-300">
+                  <Icon size={20} className="text-[#c9a84c]" />
                 </div>
-                <h3 className="text-base font-bold text-[#1d1d1f] mb-2 tracking-tight">{item.title}</h3>
-                <p className="text-[#6e6e73] text-sm leading-relaxed font-light flex-grow">{item.description}</p>
+                <h3 className="text-[#1d1d1f] group-hover:text-white font-bold text-lg mb-2 transition-colors duration-300">
+                  {value.title}
+                </h3>
+                <p className="text-[#1d1d1f]/55 group-hover:text-white/60 text-sm leading-relaxed transition-colors duration-300">
+                  {value.description}
+                </p>
               </motion.div>
             );
           })}

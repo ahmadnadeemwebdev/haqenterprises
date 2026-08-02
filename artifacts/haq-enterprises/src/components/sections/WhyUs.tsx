@@ -23,7 +23,7 @@ export default function WhyUs() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65, ease: 'easeOut' }}
           >
-            <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+            <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
               Why Choose Us
             </p>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-5">
@@ -35,7 +35,7 @@ export default function WhyUs() {
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#c9a84c] transition-colors duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#1d1d1f] transition-colors duration-300"
             >
               Work With Us
             </a>
@@ -55,7 +55,7 @@ export default function WhyUs() {
                 transition={{ duration: 0.45, delay: 0.1 + i * 0.07 }}
                 className="flex items-start gap-3 bg-[#f5f5f7] rounded-xl px-5 py-4"
               >
-                <CheckCircle2 size={18} className="text-[#c9a84c] flex-shrink-0 mt-0.5" />
+                <CheckCircle2 size={18} className="text-[#1d1d1f]/60 flex-shrink-0 mt-0.5" />
                 <p className="text-[#1d1d1f] text-sm font-medium">{point}</p>
               </motion.div>
             ))}

@@ -22,7 +22,7 @@ export default function VisionMission() {
     <section ref={ref} className="bg-[#f5f5f7] py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             Our Direction
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight">
@@ -39,10 +39,10 @@ export default function VisionMission() {
             className="bg-[#1d1d1f] rounded-2xl p-8 lg:p-10 flex flex-col"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[#c9a84c]/20 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#c9a84c]" />
+              <div className="w-8 h-8 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-[#1d1d1f]" />
               </div>
-              <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">The Vision</p>
+              <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase">The Vision</p>
             </div>
             <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
               Lead the Industry
@@ -70,10 +70,10 @@ export default function VisionMission() {
             className="bg-white border border-black/8 rounded-2xl p-8 lg:p-10 flex flex-col"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[#c9a84c]/15 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#c9a84c]" />
+              <div className="w-8 h-8 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-[#1d1d1f]" />
               </div>
-              <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">The Mission</p>
+              <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase">The Mission</p>
             </div>
             <h3 className="text-2xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
               Deliver Excellence

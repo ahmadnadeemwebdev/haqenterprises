@@ -42,7 +42,7 @@ export default function Header() {
             <path d="M19 14 Q24 11 24 16 Q24 21 19 18" stroke={scrolled ? 'white' : 'white'} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
           </svg>
           <span className={`font-bold text-sm tracking-widest uppercase transition-colors duration-300 ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}>
-            HAQ <span className={scrolled ? 'text-[#c9a84c]' : 'text-[#c9a84c]'}>Enterprises</span>
+            HAQ <span className={scrolled ? 'text-[#1d1d1f]/50' : 'text-white/60'}>Enterprises</span>
           </span>
         </a>
 
@@ -54,7 +54,7 @@ export default function Header() {
               href={link.href}
               className={`text-sm font-medium transition-colors duration-200 ${
                 scrolled
-                  ? 'text-[#1d1d1f] hover:text-[#c9a84c]'
+                  ? 'text-[#1d1d1f] hover:text-[#1d1d1f]/60'
                   : 'text-white/90 hover:text-white'
               }`}
             >
@@ -63,7 +63,7 @@ export default function Header() {
           ))}
           <a
             href="#contact"
-            className="ml-2 px-5 py-2 rounded-full text-sm font-semibold bg-[#c9a84c] text-white hover:bg-[#b8963e] transition-colors duration-200"
+            className="ml-2 px-5 py-2 rounded-full text-sm font-semibold bg-[#1d1d1f] text-white hover:bg-[#3a3a3c] transition-colors duration-200"
           >
             Get a Quote
           </a>
@@ -87,7 +87,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="py-2.5 text-sm font-medium text-[#1d1d1f] hover:text-[#c9a84c] transition-colors"
+                className="py-2.5 text-sm font-medium text-[#1d1d1f] hover:text-[#1d1d1f]/60 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -95,7 +95,7 @@ export default function Header() {
             ))}
             <a
               href="#contact"
-              className="mt-2 py-2.5 px-5 rounded-full text-sm font-semibold bg-[#c9a84c] text-white text-center hover:bg-[#b8963e] transition-colors"
+              className="mt-2 py-2.5 px-5 rounded-full text-sm font-semibold bg-[#1d1d1f] text-white text-center hover:bg-[#3a3a3c] transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Get a Quote

@@ -22,7 +22,7 @@ export default function Portfolio() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-14"
         >
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             Events Showcase
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">

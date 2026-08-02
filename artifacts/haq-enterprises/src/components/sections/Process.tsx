@@ -36,7 +36,7 @@ export default function Process() {
     <section ref={ref} className="bg-[#f5f5f7] py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             How We Work
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
@@ -64,9 +64,9 @@ export default function Process() {
                 >
                   <div className="relative inline-flex flex-col items-center">
                     <div className="w-20 h-20 rounded-2xl bg-white border border-black/8 shadow-sm flex items-center justify-center mb-5 mx-auto">
-                      <Icon size={26} className="text-[#c9a84c]" />
+                      <Icon size={26} className="text-[#1d1d1f]/60" />
                     </div>
-                    <span className="absolute -top-2 -right-2 text-[10px] font-bold text-[#c9a84c] bg-[#c9a84c]/10 rounded-full w-5 h-5 flex items-center justify-center">
+                    <span className="absolute -top-2 -right-2 text-[10px] font-bold text-[#1d1d1f]/60 bg-[#1d1d1f]/6 rounded-full w-5 h-5 flex items-center justify-center">
                       {step.step}
                     </span>
                   </div>

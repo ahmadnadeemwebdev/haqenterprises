@@ -44,7 +44,7 @@ export default function Giveaways() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+              <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
                 Customised Giveaways
               </p>
               <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-5">
@@ -56,7 +56,7 @@ export default function Giveaways() {
               </p>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#c9a84c] transition-colors duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#1d1d1f] transition-colors duration-300"
               >
                 Request a Custom Quote
                 <ArrowRight size={15} />
@@ -80,7 +80,7 @@ export default function Giveaways() {
                   <p className="text-white text-sm font-semibold">Corporate Branding Gift Package</p>
                   <p className="text-white/45 text-xs">Building Solutions, Delivering Trust.</p>
                 </div>
-                <div className="w-6 h-6 rounded-full bg-[#c9a84c] flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-[#1d1d1f] flex items-center justify-center flex-shrink-0">
                   <ArrowRight size={11} className="text-white" />
                 </div>
               </div>

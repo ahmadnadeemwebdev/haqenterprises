@@ -36,7 +36,7 @@ export default function Solutions() {
     <section id="services" ref={ref} className="bg-[#f5f5f7] py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             What We Do
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
@@ -65,7 +65,7 @@ export default function Solutions() {
 
               {/* Tag */}
               <div className="absolute top-4 left-4">
-                <span className="text-xs font-semibold text-[#c9a84c] bg-black/50 backdrop-blur-sm border border-[#c9a84c]/30 rounded-full px-3 py-1">
+                <span className="text-xs font-semibold text-[#1d1d1f]/60 bg-black/50 backdrop-blur-sm border border-[#1d1d1f]/20 rounded-full px-3 py-1">
                   {service.tag}
                 </span>
               </div>

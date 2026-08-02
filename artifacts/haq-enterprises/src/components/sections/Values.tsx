@@ -42,7 +42,7 @@ export default function Values() {
     <section ref={ref} className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             The Foundation
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-4">
@@ -64,8 +64,8 @@ export default function Values() {
                 transition={{ duration: 0.55, delay: i * 0.07, ease: 'easeOut' }}
                 className="group bg-[#f5f5f7] hover:bg-[#1d1d1f] rounded-2xl p-7 transition-colors duration-300"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/15 group-hover:bg-[#c9a84c]/20 flex items-center justify-center mb-5 transition-colors duration-300">
-                  <Icon size={20} className="text-[#c9a84c]" />
+                <div className="w-10 h-10 rounded-xl bg-[#1d1d1f]/8 group-hover:bg-[#1d1d1f]/8 flex items-center justify-center mb-5 transition-colors duration-300">
+                  <Icon size={20} className="text-[#1d1d1f]/60" />
                 </div>
                 <h3 className="text-[#1d1d1f] group-hover:text-white font-bold text-lg mb-2 transition-colors duration-300">
                   {value.title}

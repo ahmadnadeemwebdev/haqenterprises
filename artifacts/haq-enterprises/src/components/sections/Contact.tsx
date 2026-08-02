@@ -49,7 +49,7 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-14"
         >
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+          <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
             Get In Touch
           </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
@@ -77,14 +77,14 @@ export default function Contact() {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
-                  className="flex items-center gap-4 bg-white/5 border border-white/8 rounded-xl p-4 hover:bg-white/8 hover:border-[#c9a84c]/30 transition-all duration-200 group"
+                  className="flex items-center gap-4 bg-white/5 border border-white/8 rounded-xl p-4 hover:bg-white/8 hover:border-[#1d1d1f]/20 transition-all duration-200 group"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#c9a84c]/15 flex items-center justify-center flex-shrink-0">
-                    <Icon size={16} className="text-[#c9a84c]" />
+                  <div className="w-9 h-9 rounded-lg bg-[#1d1d1f]/8 flex items-center justify-center flex-shrink-0">
+                    <Icon size={16} className="text-[#1d1d1f]/60" />
                   </div>
                   <div>
                     <p className="text-white/45 text-xs mb-0.5">{item.label}</p>
-                    <p className="text-white text-sm font-medium group-hover:text-[#c9a84c] transition-colors">{item.value}</p>
+                    <p className="text-white text-sm font-medium group-hover:text-[#1d1d1f]/60 transition-colors">{item.value}</p>
                   </div>
                 </a>
               );
@@ -95,7 +95,7 @@ export default function Contact() {
               <p className="text-white/75 text-sm leading-relaxed">
                 "Let us bring your ideas to life through quality, precision, and innovation."
               </p>
-              <p className="text-[#c9a84c] text-xs mt-2 font-medium">— Talha Azeem, Founder & CEO</p>
+              <p className="text-[#1d1d1f]/60 text-xs mt-2 font-medium">— Talha Azeem, Founder & CEO</p>
             </div>
           </motion.div>
 
@@ -108,8 +108,8 @@ export default function Contact() {
           >
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center bg-white/5 border border-white/8 rounded-2xl p-10 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#c9a84c]/20 flex items-center justify-center mb-5">
-                  <Send size={24} className="text-[#c9a84c]" />
+                <div className="w-14 h-14 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center mb-5">
+                  <Send size={24} className="text-[#1d1d1f]/60" />
                 </div>
                 <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
                 <p className="text-white/55 text-sm">We'll get back to you shortly. Thank you for trusting Haq Enterprises.</p>
@@ -128,7 +128,7 @@ export default function Contact() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Your name"
-                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#1d1d1f]/30 transition-colors"
                     />
                   </div>
                   <div>
@@ -139,7 +139,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="your@email.com"
-                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                      className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#1d1d1f]/30 transition-colors"
                     />
                   </div>
                 </div>
@@ -150,7 +150,7 @@ export default function Contact() {
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
                     placeholder="Your company (optional)"
-                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#1d1d1f]/30 transition-colors"
                   />
                 </div>
                 <div>
@@ -161,12 +161,12 @@ export default function Contact() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Tell us about your project..."
-                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none"
+                    className="w-full bg-white/8 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#1d1d1f]/30 transition-colors resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg bg-[#c9a84c] text-white text-sm font-semibold hover:bg-[#b8963e] transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-lg bg-[#1d1d1f] text-white text-sm font-semibold hover:bg-[#3a3a3c] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <Send size={15} />
                   Send Message

@@ -40,7 +40,7 @@ export default function Clients() {
   return (
     <section id="clients" className="bg-[#f5f5f7] py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-3">
+        <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
           Our Clients
         </p>
         <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-3">

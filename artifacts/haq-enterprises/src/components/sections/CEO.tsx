@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/use-in-view';
 
 export default function CEO() {
-  const { ref, inView } = useInView({ threshold: 0.2 });
+  const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
     <section id="about" className="relative overflow-hidden">

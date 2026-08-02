@@ -36,7 +36,7 @@ const values = [
 ];
 
 export default function Values() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section ref={ref} className="bg-white py-24">

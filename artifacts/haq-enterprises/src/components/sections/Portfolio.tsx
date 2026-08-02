@@ -11,7 +11,7 @@ const photos = [
 ];
 
 export default function Portfolio() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="events" ref={ref} className="bg-[#0f0f0f] py-24">

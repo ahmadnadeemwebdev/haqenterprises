@@ -30,7 +30,7 @@ const steps = [
 ];
 
 export default function Process() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section ref={ref} className="bg-[#f5f5f7] py-24">

@@ -31,7 +31,7 @@ const contactInfo = [
 ];
 
 export default function Contact() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [sent, setSent] = useState(false);
 

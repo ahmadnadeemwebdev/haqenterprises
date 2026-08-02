@@ -31,7 +31,7 @@ const sizeClass: Record<string, string> = {
 };
 
 export default function Giveaways() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="giveaways" ref={ref} className="bg-white py-24">

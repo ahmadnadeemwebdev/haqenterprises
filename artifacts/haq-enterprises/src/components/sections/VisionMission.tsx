@@ -16,7 +16,7 @@ const missionPillars = [
 ];
 
 export default function VisionMission() {
-  const { ref, inView } = useInView({ threshold: 0.15 });
+  const [ref, inView] = useInView({ threshold: 0.15 });
 
   return (
     <section ref={ref} className="bg-[#f5f5f7] py-24">

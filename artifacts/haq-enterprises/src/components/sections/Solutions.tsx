@@ -30,7 +30,7 @@ const services = [
 ];
 
 export default function Solutions() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   return (
     <section id="services" ref={ref} className="bg-[#f5f5f7] py-24">

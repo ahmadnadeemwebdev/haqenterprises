@@ -33,16 +33,16 @@ export default function VisionMission() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Vision */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.65, ease: 'easeOut' }}
             className="bg-[#1d1d1f] rounded-2xl p-8 lg:p-10 flex flex-col"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#1d1d1f]" />
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-white/70" />
               </div>
-              <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase">The Vision</p>
+              <p className="text-white/45 text-xs font-semibold tracking-widest uppercase">The Vision</p>
             </div>
             <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
               Lead the Industry
@@ -64,8 +64,8 @@ export default function VisionMission() {
 
           {/* Mission */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.65, delay: 0.12, ease: 'easeOut' }}
             className="bg-white border border-black/8 rounded-2xl p-8 lg:p-10 flex flex-col"
           >

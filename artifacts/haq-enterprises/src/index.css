@@ -154,12 +154,20 @@ html { scroll-behavior: smooth; }
     text-rendering: optimizeLegibility;
   }
 
-  /* Sharp heading rendering */
+  /* Sharp heading rendering — avoid GPU layer artifacts */
   h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: geometricPrecision;
-    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-optical-sizing: auto;
+  }
+
+  /* Framer Motion animated containers — keep text on CPU layer */
+  [style*="opacity"] h1,
+  [style*="opacity"] h2,
+  [style*="opacity"] h3 {
+    transform: none !important;
+    will-change: auto;
   }
 }
 

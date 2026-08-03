@@ -64,8 +64,8 @@ export default function Contact() {
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-2 space-y-4"
           >
@@ -101,8 +101,8 @@ export default function Contact() {
 
           {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="lg:col-span-3"
           >

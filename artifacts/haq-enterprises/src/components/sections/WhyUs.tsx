@@ -19,8 +19,8 @@ export default function WhyUs() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.65, ease: 'easeOut' }}
           >
             <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-3">
@@ -42,16 +42,16 @@ export default function WhyUs() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' }}
             className="space-y-3"
           >
             {points.map((point, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: 15 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.45, delay: 0.1 + i * 0.07 }}
                 className="flex items-start gap-3 bg-[#f5f5f7] rounded-xl px-5 py-4"
               >

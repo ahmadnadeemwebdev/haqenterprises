@@ -11,9 +11,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <img
-              src="/images/haq-logo.png"
+              src="/images/haq-logo-transparent.png"
               alt="Haq Enterprises"
-              className="h-10 w-auto mb-4 brightness-0 invert"
+              className="h-12 w-auto mb-5 brightness-0 invert"
             />
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               A full-service printing, packaging, and corporate events company. Building solutions, delivering trust.
@@ -33,7 +33,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-white/55 text-sm hover:text-[#1d1d1f]/60 transition-colors duration-200">
+                    <a href="#" className="text-white/55 text-sm hover:text-white/90 transition-colors duration-200">
                       {link}
                     </a>
                   </li>

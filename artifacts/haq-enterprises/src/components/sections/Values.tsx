@@ -59,8 +59,8 @@ export default function Values() {
             return (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.07, ease: 'easeOut' }}
                 className="group bg-[#f5f5f7] hover:bg-[#1d1d1f] rounded-2xl p-7 transition-colors duration-300"
               >

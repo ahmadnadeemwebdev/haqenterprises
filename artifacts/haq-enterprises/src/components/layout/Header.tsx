@@ -24,23 +24,20 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         scrolled
-          ? 'bg-white/60 backdrop-blur-2xl shadow-sm border-b border-black/8'
+          ? 'bg-white/65 backdrop-blur-2xl shadow-sm border-b border-black/8'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5 flex-shrink-0 select-none">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="6" fill={scrolled ? '#1d1d1f' : 'rgba(255,255,255,0.15)'} />
-            <rect x="7" y="8" width="4" height="16" fill="white" />
-            <rect x="7" y="14" width="10" height="4" fill="white" />
-            <rect x="13" y="8" width="4" height="16" fill="white" />
-            <path d="M19 14 Q24 11 24 16 Q24 21 19 18" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-          </svg>
-          <span className={`font-bold text-sm tracking-widest uppercase transition-colors duration-300 ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}>
-            HAQ <span className={scrolled ? 'text-[#1d1d1f]/45' : 'text-white/60'}>Enterprises</span>
-          </span>
+        {/* Real HAQ Enterprises Logo */}
+        <a href="#" className="flex items-center gap-3 flex-shrink-0 select-none">
+          <img
+            src="/images/haq-logo-transparent.png"
+            alt="Haq Enterprises"
+            className={`h-10 w-auto object-contain transition-all duration-300 ${
+              scrolled ? 'brightness-0' : 'brightness-0 invert'
+            }`}
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -72,7 +69,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white/80 backdrop-blur-2xl border-t border-black/5 shadow-lg">
+        <div className="md:hidden bg-white/85 backdrop-blur-2xl border-t border-black/5 shadow-lg">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a

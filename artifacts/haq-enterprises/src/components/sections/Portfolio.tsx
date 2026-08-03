@@ -38,8 +38,8 @@ export default function Portfolio() {
           {photos.map((photo, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
               className="group relative rounded-xl overflow-hidden aspect-video bg-white/5"
             >

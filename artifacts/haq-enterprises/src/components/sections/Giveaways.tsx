@@ -76,8 +76,8 @@ export default function Giveaways() {
           {/* Left: Content */}
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
               <p className="text-[#1d1d1f]/50 text-xs font-semibold tracking-widest uppercase mb-3">
@@ -101,8 +101,8 @@ export default function Giveaways() {
 
             {/* Product Carousel */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
               className="mt-10 rounded-2xl overflow-hidden shadow-xl bg-[#0f0f0f]"
             >
@@ -169,14 +169,14 @@ export default function Giveaways() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
             className="flex flex-wrap gap-3"
           >
             {categories.map((cat, i) => (
               <motion.span
                 key={cat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.05 + i * 0.04 }}
                 className={`${sizeClass[cat.size]} font-medium text-[#1d1d1f] bg-[#f5f5f7] border border-black/8 rounded-full cursor-default hover:bg-[#1d1d1f] hover:text-white hover:border-[#1d1d1f] transition-colors duration-200`}
               >

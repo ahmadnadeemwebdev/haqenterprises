@@ -23,8 +23,8 @@ export default function CEO() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: About text */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <p className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-4">
@@ -44,8 +44,8 @@ export default function CEO() {
 
           {/* Right: CEO quote */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
             className="relative"
           >

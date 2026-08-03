@@ -23,9 +23,9 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32">
         <div className="max-w-2xl">
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
           >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
@@ -75,8 +75,8 @@ export default function Hero() {
 
         {/* Floating stat cards — bottom right */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="absolute bottom-16 right-8 lg:right-16 flex gap-3"
         >

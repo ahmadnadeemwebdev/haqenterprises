@@ -57,8 +57,8 @@ export default function Process() {
               return (
                 <motion.div
                   key={step.step}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
                   transition={{ duration: 0.55, delay: i * 0.1, ease: 'easeOut' }}
                   className="relative text-center"
                 >

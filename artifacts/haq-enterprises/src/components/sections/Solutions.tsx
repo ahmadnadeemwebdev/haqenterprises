@@ -51,8 +51,8 @@ export default function Solutions() {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.09, ease: 'easeOut' }}
               className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
             >

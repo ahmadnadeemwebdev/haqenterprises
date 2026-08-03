@@ -26,12 +26,13 @@ export default function Clients() {
     let pos = 0;
     let raf: number;
 
-    // Slower speed: 0.3px per frame instead of 0.5
+    // Slower speed, rounded to whole pixels to prevent blur
     const tick = () => {
-      pos += 0.3;
+      pos += 0.4;
       const third = track.scrollWidth / 3;
       if (pos >= third) pos = 0;
-      track.style.transform = `translateX(-${pos}px)`;
+      // Round to nearest pixel to avoid subpixel blurring
+      track.style.transform = `translateX(-${Math.round(pos)}px)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);

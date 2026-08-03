@@ -22,27 +22,24 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-black/5'
+          ? 'bg-white/60 backdrop-blur-2xl shadow-sm border-b border-black/8'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 flex-shrink-0 select-none">
-          {/* HAQ logo mark */}
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="32" height="32" rx="6" fill={scrolled ? '#1d1d1f' : 'rgba(255,255,255,0.15)'} />
-            {/* Stylised H */}
-            <rect x="7" y="8" width="4" height="16" fill={scrolled ? 'white' : 'white'} />
-            <rect x="7" y="14" width="10" height="4" fill={scrolled ? 'white' : 'white'} />
-            <rect x="13" y="8" width="4" height="16" fill={scrolled ? 'white' : 'white'} />
-            {/* AQ arc hint */}
-            <path d="M19 14 Q24 11 24 16 Q24 21 19 18" stroke={scrolled ? 'white' : 'white'} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            <rect x="7" y="8" width="4" height="16" fill="white" />
+            <rect x="7" y="14" width="10" height="4" fill="white" />
+            <rect x="13" y="8" width="4" height="16" fill="white" />
+            <path d="M19 14 Q24 11 24 16 Q24 21 19 18" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
           </svg>
           <span className={`font-bold text-sm tracking-widest uppercase transition-colors duration-300 ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}>
-            HAQ <span className={scrolled ? 'text-[#1d1d1f]/50' : 'text-white/60'}>Enterprises</span>
+            HAQ <span className={scrolled ? 'text-[#1d1d1f]/45' : 'text-white/60'}>Enterprises</span>
           </span>
         </a>
 
@@ -54,19 +51,13 @@ export default function Header() {
               href={link.href}
               className={`text-sm font-medium transition-colors duration-200 ${
                 scrolled
-                  ? 'text-[#1d1d1f] hover:text-[#1d1d1f]/60'
+                  ? 'text-[#1d1d1f] hover:text-[#1d1d1f]/55'
                   : 'text-white/90 hover:text-white'
               }`}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="ml-2 px-5 py-2 rounded-full text-sm font-semibold bg-[#1d1d1f] text-white hover:bg-[#3a3a3c] transition-colors duration-200"
-          >
-            Get a Quote
-          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -81,7 +72,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-black/5 shadow-lg">
+        <div className="md:hidden bg-white/80 backdrop-blur-2xl border-t border-black/5 shadow-lg">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
@@ -93,13 +84,6 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="mt-2 py-2.5 px-5 rounded-full text-sm font-semibold bg-[#1d1d1f] text-white text-center hover:bg-[#3a3a3c] transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Get a Quote
-            </a>
           </nav>
         </div>
       )}

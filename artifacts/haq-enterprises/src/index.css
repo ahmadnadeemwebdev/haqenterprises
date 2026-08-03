@@ -149,6 +149,17 @@ html { scroll-behavior: smooth; }
   * { @apply border-border; }
   body {
     @apply font-sans antialiased bg-background text-foreground selection:bg-[#0071e3]/15 selection:text-[#0071e3];
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Sharp heading rendering */
+  h1, h2, h3, h4, h5, h6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    font-feature-settings: "kern" 1;
   }
 }
 

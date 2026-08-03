@@ -27,12 +27,12 @@ export default function CEO() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-4">
               About Us
             </p>
             <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
               State-of-the-Art<br />
-              <span className="text-white/60">Printing &amp; Packaging</span>
+              <span className="text-white/55">Printing &amp; Packaging</span>
             </h2>
             <p className="text-white/65 text-base leading-relaxed mb-5">
               Haq Enterprises is a full-service printing and packaging company. With over 5 years of industry experience, we have earned a trusted reputation for delivering premium printing and packaging solutions.
@@ -50,23 +50,25 @@ export default function CEO() {
             className="relative"
           >
             {/* Decorative quote mark */}
-            <div className="absolute -top-6 -left-4 text-[120px] font-serif text-[#1d1d1f]/60/20 leading-none select-none">
+            <div className="absolute -top-6 -left-4 text-[120px] font-serif text-white/8 leading-none select-none pointer-events-none">
               "
             </div>
             <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-10">
-              <p className="text-[#1d1d1f]/60 text-xs font-semibold tracking-widest uppercase mb-5">
+              <p className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-5">
                 Message From The Founder
               </p>
-              <blockquote className="text-white/85 text-lg leading-relaxed italic mb-8">
+              <blockquote className="text-white/80 text-lg leading-relaxed italic mb-8">
                 "At Haq Enterprises, we believe great events are built on vision, creativity, and flawless execution. Every project is an opportunity to create lasting memories and deliver experiences that truly inspire. Our commitment is simple — to exceed expectations, build trusted relationships, and bring every client's vision to life with passion and professionalism."
               </blockquote>
+
+              {/* Attribution — left-aligned */}
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#1d1d1f]/8 flex items-center justify-center">
-                  <span className="text-[#1d1d1f]/60 font-bold text-sm">TA</span>
+                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center flex-shrink-0">
+                  <span className="text-white/70 font-bold text-sm">TA</span>
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm">Talha Azeem</p>
-                  <p className="text-white/50 text-xs">Founder &amp; CEO, Haq Enterprises</p>
+                  <p className="text-white/45 text-xs">Founder &amp; CEO, Haq Enterprises</p>
                 </div>
               </div>
             </div>

@@ -38,22 +38,22 @@ const products = [
     subtitle: 'Thermos · Notebook · Keychain · Pen',
   },
   {
-    src: '/images/product-2_2.jpg',
+    src: '/images/product-2_2-branded.jpg',
     title: 'Executive Premium Gift Set',
     subtitle: 'Bottle · Wallet · Gold Pen · Earbuds',
   },
   {
-    src: '/images/product-3_2.jpg',
+    src: '/images/product-3_2-branded.jpg',
     title: 'Luxury Packaging Collection',
     subtitle: 'Power Bank · USB Hub · Notebook · Mug',
   },
   {
-    src: '/images/product-4_2.jpg',
+    src: '/images/product-4_2-branded.jpg',
     title: 'Corporate Event Apparel Set',
     subtitle: 'Polo · Cap · Tote Bag · Umbrella',
   },
   {
-    src: '/images/product-5_2.jpg',
+    src: '/images/product-5_2-branded.jpg',
     title: 'Premium Desk Accessories Kit',
     subtitle: 'Wireless Pad · Planner · Organizer · Pencil',
   },

@@ -139,11 +139,11 @@ export default function Header() {
           <img
             src="/images/haq-logo-transparent.png"
             alt="Haq Enterprises"
-            className={`h-12 sm:h-14 md:h-18 w-auto object-contain transition-all duration-300 ${
+            className={`h-12 sm:h-14 md:h-16 w-auto max-w-[200px] object-contain transition-all duration-300 ${
               scrolled ? '' : 'filter invert brightness-200'
             }`}
-            width={320}
-            height={120}
+            width={400}
+            height={150}
             loading="eager"
             decoding="async"
             fetchPriority="high"

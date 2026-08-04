@@ -5,9 +5,9 @@ import { Menu, X } from 'lucide-react';
 // smooth scroll behavior while the JS handler applies the fixed offset.
 const navLinks = [
   { label: 'About', section: '#about' },
-  { label: 'Blog', section: '#blog' },
   { label: 'Services', section: '#services' },
   { label: 'Events', section: '#events' },
+  { label: 'Blog', section: '#blog' },
   { label: 'Giveaways', section: '#giveaways' },
   { label: 'Clients', section: '#clients' },
   { label: 'Contact', section: '#contact' },
@@ -28,37 +28,60 @@ export default function Header() {
   const SCROLL_OFFSET = 88; // Fixed navbar height + visual spacing.
 
   useEffect(() => {
-    const updateActiveSection = () => {
-      const sectionEntries = navLinks
+    let sectionEntries: Array<{ section: string; element: HTMLElement }> = [];
+    let retryTimeout: number | null = null;
+
+    const updateSectionEntries = () => {
+      sectionEntries = navLinks
         .map((link) => {
           const element = document.querySelector(link.section) as HTMLElement | null;
           return element ? { section: link.section, element } : null;
         })
-        .filter((entry): entry is { section: string; element: HTMLElement } => Boolean(entry))
-        .sort((a, b) => a.element.offsetTop - b.element.offsetTop);
+        .filter((entry): entry is { section: string; element: HTMLElement } => Boolean(entry));
+    };
+
+    const updateActiveSection = () => {
+      if (sectionEntries.length === 0) {
+        return;
+      }
 
       const scrollPosition = window.scrollY + SCROLL_OFFSET + 1;
       let currentSection = '#home';
 
       sectionEntries.forEach(({ section, element }) => {
-        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const elementTop = element.offsetTop;
         if (elementTop <= scrollPosition) {
           currentSection = section;
         }
       });
 
       setActiveSection(currentSection);
+      if (window.location.hash !== currentSection) {
+        window.history.replaceState(null, '', currentSection);
+      }
     };
 
-    updateActiveSection();
-    const timeout = window.setTimeout(updateActiveSection, 500);
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
-    window.addEventListener('resize', updateActiveSection);
+    const initialize = () => {
+      updateSectionEntries();
+
+      if (sectionEntries.length === 0) {
+        retryTimeout = window.setTimeout(initialize, 250);
+        return;
+      }
+
+      updateActiveSection();
+      window.addEventListener('scroll', updateActiveSection, { passive: true });
+      window.addEventListener('resize', updateSectionEntries);
+    };
+
+    initialize();
 
     return () => {
-      window.clearTimeout(timeout);
+      if (retryTimeout !== null) {
+        window.clearTimeout(retryTimeout);
+      }
       window.removeEventListener('scroll', updateActiveSection);
-      window.removeEventListener('resize', updateActiveSection);
+      window.removeEventListener('resize', updateSectionEntries);
     };
   }, []);
 
@@ -75,6 +98,7 @@ export default function Header() {
     event.preventDefault();
     setActiveSection(section);
     setMenuOpen(false);
+    window.history.replaceState(null, '', section);
     scrollToSection(section);
   };
 

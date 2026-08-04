@@ -79,7 +79,8 @@ export default function Contact() {
       setForm({ name: '', email: '', phone: '', subject: '', company: '', message: '' });
     } catch (error) {
       setStatus('error');
-      setErrorMessage('Something went wrong while sending the message. Please try again.');
+      const errorText = error instanceof Error ? error.message : JSON.stringify(error);
+      setErrorMessage(`Something went wrong while sending the message. ${errorText}`);
       // eslint-disable-next-line no-console
       console.error('EmailJS error:', error);
     }

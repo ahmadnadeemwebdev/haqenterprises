@@ -41,8 +41,7 @@ try {
       pngquant: { quality: [0.65, 0.9], speed: 4 },
       mozjpeg: { quality: 75 },
       svgo: { plugins: [{ removeViewBox: false }] },
-      webp: { quality: 75 },
-    }),
+      webp: { quality: 75 },      exclude: ['favicon.svg'],    }),
   );
 } catch {
   console.warn('vite-plugin-imagemin not available; continuing without image optimization plugin.');

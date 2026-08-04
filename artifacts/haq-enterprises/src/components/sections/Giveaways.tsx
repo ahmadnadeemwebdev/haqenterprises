@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from '@/hooks/use-in-view';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const categories = [
@@ -33,34 +32,63 @@ const sizeClass: Record<string, string> = {
 
 const products = [
   {
-    src: '/images/gift-package.jpg',
+    srcJpg: '/images/gift-package.jpg',
+    srcWebp: '/images/gift-package.jpg',
     title: 'Corporate Branding Gift Package',
     subtitle: 'Thermos · Notebook · Keychain · Pen',
   },
   {
-    src: '/images/product-2_2-branded.jpg',
+    srcJpg: '/images/product-2_2-branded.jpg',
+    srcWebp: '/images/product-2_2-branded.webp',
     title: 'Executive Premium Gift Set',
     subtitle: 'Bottle · Wallet · Gold Pen · Earbuds',
   },
   {
-    src: '/images/product-3_2-branded.jpg',
+    srcJpg: '/images/product-2_2.jpg',
+    srcWebp: '/images/product-2_2.webp',
     title: 'Luxury Packaging Collection',
     subtitle: 'Power Bank · USB Hub · Notebook · Mug',
   },
   {
-    src: '/images/product-4_2-branded.jpg',
+    srcJpg: '/images/product-3.jpg',
+    srcWebp: '/images/product-3.webp',
     title: 'Corporate Event Apparel Set',
     subtitle: 'Polo · Cap · Tote Bag · Umbrella',
   },
   {
-    src: '/images/product-5_2-branded.jpg',
+    srcJpg: '/images/product-4_2.jpg',
+    srcWebp: '/images/product-4_2.webp',
     title: 'Premium Desk Accessories Kit',
     subtitle: 'Wireless Pad · Planner · Organizer · Pencil',
   },
 ];
 
+function useInViewLocal(options = { threshold: 0.1 }) {
+  const [ref, setRef] = useState<HTMLElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        observer.disconnect();
+      }
+    }, options as IntersectionObserverInit);
+
+    observer.observe(ref);
+
+    return () => {
+      if (ref) observer.unobserve(ref);
+    };
+  }, [ref, options.threshold]);
+
+  return [setRef, isInView] as const;
+}
+
 export default function Giveaways() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInViewLocal({ threshold: 0.1 });
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -109,7 +137,7 @@ export default function Giveaways() {
               {/* Image area with sliding animation */}
               <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                 <AnimatePresence mode="wait" custom={direction}>
-                  <motion.img
+                  <motion.div
                     key={current}
                     custom={direction}
                     variants={{
@@ -121,10 +149,20 @@ export default function Giveaways() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                    src={products[current].src}
-                    alt={products[current].title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+                    className="absolute inset-0"
+                  >
+                    <picture>
+                      <source srcSet={products[current].srcWebp} type="image/webp" />
+                      <img
+                        src={products[current].srcJpg}
+                        alt={products[current].title}
+                        className="w-full h-full object-cover"
+                        width={800}
+                        height={600}
+                        loading="lazy"
+                      />
+                    </picture>
+                  </motion.div>
                 </AnimatePresence>
 
                 {/* Dot indicators */}

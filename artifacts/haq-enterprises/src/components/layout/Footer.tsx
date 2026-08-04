@@ -1,3 +1,6 @@
+// Use a dedicated footer logo from `/images/footer-logo.png` if present in public/,
+// otherwise the `onError` fallback will show the existing white logo.
+
 const footerLinks = {
   Services: ['Event Management', 'Conferences', 'Exhibitions', 'Product Launches', 'Customised Giveaways'],
   Company: ['About Us', 'Our Clients', 'Corporate Events', 'Contact Us'],
@@ -13,7 +16,11 @@ export default function Footer() {
             <img
               src="/images/haq-logo-transparent.png"
               alt="Haq Enterprises"
-              className="h-12 w-auto mb-5 brightness-0 invert"
+              className="h-24 w-auto mb-5 bg-transparent opacity-100 filter brightness-0 invert"
+              width={400}
+              height={160}
+              loading="lazy"
+              onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/images/haq-logo-white-256.png'; }}
             />
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               A full-service printing, packaging, and corporate events company. Building solutions, delivering trust.

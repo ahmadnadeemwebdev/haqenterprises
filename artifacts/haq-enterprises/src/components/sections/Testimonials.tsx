@@ -58,13 +58,13 @@ export function TestimonialsSection() {
               transition={{ duration: 0.55, delay: i * 0.1 }}
               className="bg-[#f5f5f7] hover:bg-white rounded-2xl p-8 flex flex-col card-shadow transition-colors duration-300"
             >
-              <Quote className="w-8 h-8 text-[#d2d2d7] mb-5 flex-shrink-0" />
+              <Quote className="w-8 h-8 text-[#d2d2d7] mb-5 shrink-0" />
               <p className="text-[#424245] text-sm leading-relaxed font-light flex-grow mb-8 italic">
                 "{t.quote}"
               </p>
               <div className="flex items-center gap-4">
                 <div
-                  className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+                  className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
                   style={{ backgroundColor: t.color }}
                 >
                   {t.initials}

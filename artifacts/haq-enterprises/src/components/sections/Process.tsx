@@ -49,7 +49,7 @@ export default function Process() {
 
         <div className="relative">
           {/* Connector line */}
-          <div className="hidden lg:block absolute top-10 left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+          <div className="hidden lg:block absolute top-10 left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-linear-to-r from-transparent via-black/10 to-transparent" />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => {

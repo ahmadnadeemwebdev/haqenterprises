@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Sitemap: https://www.haqenterprises.online/sitemap.xml
+Disallow: /src/
+Disallow: /node_modules/

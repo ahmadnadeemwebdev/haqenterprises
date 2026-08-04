@@ -8,11 +8,16 @@ export default function CEO() {
     <section id="about" className="relative overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img
-          src="/images/mission-bg.jpg"
-          alt="Haq Enterprises Print Studio"
-          className="w-full h-full object-cover"
-        />
+        <picture>
+          <source srcSet="/images/mission-bg.webp" type="image/webp" />
+          <img
+            src="/images/mission-bg.jpg"
+            alt="Haq Enterprises Print Studio"
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         <div className="absolute inset-0 bg-[#0f0f0f]/88" />
       </div>
 
@@ -31,14 +36,14 @@ export default function CEO() {
               About Us
             </p>
             <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
-              State-of-the-Art<br />
-              <span className="text-white/55">Printing &amp; Packaging</span>
+              Trusted Printing &amp;<br />
+              <span className="text-white/55">Packaging Solutions in Pakistan</span>
             </h2>
             <p className="text-white/65 text-base leading-relaxed mb-5">
-              Haq Enterprises is a full-service printing and packaging company. With over 5 years of industry experience, we have earned a trusted reputation for delivering premium printing and packaging solutions.
+              Haq Enterprises is a full-service printing company and packaging solutions provider in Pakistan, known for premium quality, dependable service, and professional execution for brands, events, and promotional campaigns.
             </p>
             <p className="text-white/65 text-base leading-relaxed">
-              Driven by innovation, advanced technology, and skilled professionals, we provide creative, high-quality, and reliable solutions tailored to meet the unique needs of every client.
+              From corporate events and branded giveaways to packaging design and production, our team combines innovation, advanced technology, and industry expertise to deliver memorable results.
             </p>
           </motion.div>
 
@@ -63,7 +68,7 @@ export default function CEO() {
 
               {/* Attribution — left-aligned */}
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
                   <span className="text-white/70 font-bold text-sm">TA</span>
                 </div>
                 <div>

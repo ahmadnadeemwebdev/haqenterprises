@@ -1,17 +1,20 @@
+import { Suspense, lazy } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
-import Stats from '@/components/sections/Stats';
-import CEO from '@/components/sections/CEO';
-import VisionMission from '@/components/sections/VisionMission';
-import Values from '@/components/sections/Values';
-import WhyUs from '@/components/sections/WhyUs';
-import Solutions from '@/components/sections/Solutions';
-import Portfolio from '@/components/sections/Portfolio';
-import Giveaways from '@/components/sections/Giveaways';
-import Process from '@/components/sections/Process';
-import Clients from '@/components/sections/Clients';
-import Contact from '@/components/sections/Contact';
+
+const Stats = lazy(() => import('@/components/sections/Stats'));
+const CEO = lazy(() => import('@/components/sections/CEO'));
+const VisionMission = lazy(() => import('@/components/sections/VisionMission'));
+const Values = lazy(() => import('@/components/sections/Values'));
+const WhyUs = lazy(() => import('@/components/sections/WhyUs'));
+const Solutions = lazy(() => import('@/components/sections/Solutions'));
+const Portfolio = lazy(() => import('@/components/sections/Portfolio'));
+const Blog = lazy(() => import('@/components/sections/Blog'));
+const Giveaways = lazy(() => import('@/components/sections/Giveaways'));
+const Process = lazy(() => import('@/components/sections/Process'));
+const Clients = lazy(() => import('@/components/sections/Clients'));
+const Contact = lazy(() => import('@/components/sections/Contact'));
 
 export default function App() {
   return (
@@ -19,17 +22,42 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Stats />
-        <CEO />
-        <VisionMission />
-        <Values />
-        <WhyUs />
-        <Solutions />
-        <Portfolio />
-        <Giveaways />
-        <Process />
-        <Clients />
-        <Contact />
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Stats />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-55" />}>
+          <CEO />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-55" />}>
+          <VisionMission />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-55" />}>
+          <Values />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-55" />}>
+          <WhyUs />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Solutions />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Portfolio />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Blog />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Giveaways />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Process />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Clients />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-30" />}>
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

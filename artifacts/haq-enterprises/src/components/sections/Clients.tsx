@@ -52,8 +52,8 @@ export default function Clients() {
 
       {/* Ticker */}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-40 bg-linear-to-r from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-40 bg-linear-to-l from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
 
         <div className="overflow-hidden">
           <div
@@ -64,7 +64,7 @@ export default function Clients() {
             {tripled.map((client, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-52 h-28 bg-white rounded-2xl border border-black/8 flex flex-col items-center justify-center gap-3 px-6 shadow-sm"
+                className="shrink-0 w-52 h-28 bg-white rounded-2xl border border-black/8 flex flex-col items-center justify-center gap-3 px-6 shadow-sm"
                 style={{ imageRendering: 'auto' }}
               >
                 <img
@@ -72,6 +72,10 @@ export default function Clients() {
                   alt={client.name}
                   className="max-h-14 max-w-[160px] w-auto object-contain"
                   style={{ imageRendering: 'auto', filter: 'none' }}
+                  width={160}
+                  height={56}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="text-[11px] font-semibold text-[#1d1d1f]/45 text-center leading-tight">
                   {client.name}

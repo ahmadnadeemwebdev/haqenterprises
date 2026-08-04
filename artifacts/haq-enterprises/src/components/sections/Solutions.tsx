@@ -1,36 +1,64 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { useInView } from '@/hooks/use-in-view';
+import { useState, useEffect } from 'react';
 
 const services = [
   {
     title: 'Event Management',
     description: 'Complete event planning and seamless execution from start to finish. From intimate corporate gatherings to large-scale productions.',
-    image: '/images/event-1.jpg',
+    srcJpg: '/images/event-1.jpg',
+    srcWebp: '/images/event-1.webp',
     tag: 'Core Service',
   },
   {
     title: 'Conferences',
     description: 'Professional conference solutions designed for impactful business engagement. End-to-end production, AV, branding, and logistics.',
-    image: '/images/event-2.jpg',
+    srcJpg: '/images/event-2.jpg',
+    srcWebp: '/images/event-2.webp',
     tag: 'Core Service',
   },
   {
     title: 'Exhibitions',
     description: 'Creative exhibition solutions that maximize brand visibility and audience engagement at trade shows and expos.',
-    image: '/images/event-3.jpg',
+    srcJpg: '/images/event-3.jpg',
+    srcWebp: '/images/event-3.webp',
     tag: 'Popular',
   },
   {
     title: 'Product Launches',
     description: 'Strategic launch events that create excitement, media attention, and lasting impact for your brand\'s new offerings.',
-    image: '/images/event-4.jpg',
+    srcJpg: '/images/event-4.jpg',
+    srcWebp: '/images/event-4.webp',
     tag: 'Popular',
   },
 ];
 
+function useInViewLocal(options = { threshold: 0.1 }) {
+  const [ref, setRef] = useState<HTMLElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        observer.disconnect();
+      }
+    }, options as IntersectionObserverInit);
+
+    observer.observe(ref);
+
+    return () => {
+      if (ref) observer.unobserve(ref);
+    };
+  }, [ref, options.threshold]);
+
+  return [setRef, isInView] as const;
+}
+
 export default function Solutions() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+  const [ref, inView] = useInViewLocal({ threshold: 0.1 });
 
   return (
     <section id="services" ref={ref} className="bg-[#f5f5f7] py-24">
@@ -43,7 +71,7 @@ export default function Solutions() {
             Our Services
           </h2>
           <p className="text-[#1d1d1f]/55 text-base max-w-xl mx-auto">
-            End-to-end solutions for printing, packaging, and corporate events that make your brand unforgettable.
+            End-to-end printing, packaging, event management, and branded giveaway solutions designed to help businesses in Pakistan stand out and perform with confidence.
           </p>
         </div>
 
@@ -56,12 +84,18 @@ export default function Solutions() {
               transition={{ duration: 0.6, delay: i * 0.09, ease: 'easeOut' }}
               className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
             >
-              <img
-                src={service.image}
-                alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <picture>
+                <source srcSet={(service as any).srcWebp} type="image/webp" />
+                <img
+                  src={(service as any).srcJpg}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-transparent" />
 
               {/* Tag */}
               <div className="absolute top-4 left-4">

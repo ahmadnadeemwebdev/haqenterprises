@@ -1,17 +1,41 @@
 import { motion } from 'framer-motion';
-import { useInView } from '@/hooks/use-in-view';
+import { useState, useEffect } from 'react';
 
 const photos = [
-  { src: '/images/event-1.jpg', caption: 'Huawei Data Center Carnival 2026', span: 'col-span-2 row-span-2' },
-  { src: '/images/event-conf1.jpg', caption: 'Conference Presentation', span: '' },
-  { src: '/images/event-conf2.jpg', caption: 'Event Branding & Signage', span: '' },
-  { src: '/images/event-2.jpg', caption: 'Sufi Beats & Digital Feats — Tech Evening 2026', span: 'col-span-2' },
-  { src: '/images/event-3.jpg', caption: 'Huawei EZY Policy & Partnership Summit', span: '' },
-  { src: '/images/event-4.jpg', caption: 'Huawei Sales Summit 2026', span: '' },
+  { srcJpg: '/images/event-1.jpg', srcWebp: '/images/event-1.webp', caption: 'Huawei Data Center Carnival 2026', span: 'col-span-2 row-span-2' },
+  { srcJpg: '/images/event-conf1.jpg', srcWebp: '/images/event-conf1.webp', caption: 'Conference Presentation', span: '' },
+  { srcJpg: '/images/event-conf2.jpg', srcWebp: '/images/event-conf2.webp', caption: 'Event Branding & Signage', span: '' },
+  { srcJpg: '/images/event-2.jpg', srcWebp: '/images/event-2.webp', caption: 'Sufi Beats & Digital Feats — Tech Evening 2026', span: 'col-span-2' },
+  { srcJpg: '/images/event-3.jpg', srcWebp: '/images/event-3.webp', caption: 'Huawei EZY Policy & Partnership Summit', span: '' },
+  { srcJpg: '/images/event-4.jpg', srcWebp: '/images/event-4.webp', caption: 'Huawei Sales Summit 2026', span: '' },
 ];
 
 export default function Portfolio() {
-  const [ref, inView] = useInView({ threshold: 0.1 });
+  function useInViewLocal(options = { threshold: 0.1 }) {
+    const [ref, setRef] = useState<HTMLElement | null>(null);
+    const [isInView, setIsInView] = useState(false);
+
+    useEffect(() => {
+      if (!ref) return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      }, options as IntersectionObserverInit);
+
+      observer.observe(ref);
+
+      return () => {
+        if (ref) observer.unobserve(ref);
+      };
+    }, [ref, options.threshold]);
+
+    return [setRef, isInView] as const;
+  }
+
+  const [ref, inView] = useInViewLocal({ threshold: 0.1 });
 
   return (
     <section id="events" ref={ref} className="bg-[#0f0f0f] py-24">
@@ -43,12 +67,19 @@ export default function Portfolio() {
               transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
               className="group relative rounded-xl overflow-hidden aspect-video bg-white/5"
             >
-              <img
-                src={photo.src}
-                alt={photo.caption}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <picture>
+                  <source srcSet={photo.srcWebp} type="image/webp" />
+                  <img
+                    src={photo.srcJpg}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <p className="text-white text-xs font-medium">{photo.caption}</p>
               </div>

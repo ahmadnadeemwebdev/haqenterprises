@@ -27,11 +27,11 @@ export default function WhyUs() {
               Why Choose Us
             </p>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1d1d1f] tracking-tight mb-5">
-              Quality You Can<br />
-              <span className="text-[#1d1d1f]/50">Count On</span>
+              Premium Printing &<br />
+              <span className="text-[#1d1d1f]/50">Packaging Services in Pakistan</span>
             </h2>
             <p className="text-[#1d1d1f]/55 text-base leading-relaxed mb-8">
-              With over 5 years of industry experience and a commitment to excellence, we've built lasting partnerships with some of Pakistan's most demanding brands.
+              With over 5 years of industry experience and a commitment to excellence, Haq Enterprises has become a trusted partner for businesses seeking premium printing, packaging, corporate events, and branded giveaway solutions across Pakistan.
             </p>
             <a
               href="#contact"
@@ -55,7 +55,7 @@ export default function WhyUs() {
                 transition={{ duration: 0.45, delay: 0.1 + i * 0.07 }}
                 className="flex items-start gap-3 bg-[#f5f5f7] rounded-xl px-5 py-4"
               >
-                <CheckCircle2 size={18} className="text-[#1d1d1f]/60 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 size={18} className="text-[#1d1d1f]/60 shrink-0 mt-0.5" />
                 <p className="text-[#1d1d1f] text-sm font-medium">{point}</p>
               </motion.div>
             ))}

@@ -4,7 +4,7 @@ const services = ['Printing', 'Packaging', 'Corporate Events', 'Custom Giveaways
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100vh-4rem)] md:min-h-screen flex items-center overflow-hidden">
       {/* Full-bleed studio background */}
       <div className="absolute inset-0">
         <img
@@ -24,21 +24,21 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32">
-        <div className="max-w-2xl">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-10 lg:px-16 py-20 sm:py-28">
+        <div className="max-w-full sm:max-w-2xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             <span className="text-white/85 text-xs font-medium tracking-wide">Trusted Printing, Packaging & Corporate Events in Pakistan</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
             Premium<br />
             Printing, Packaging<br />
             <span className="text-white/45">& Corporate Events.</span>
           </h1>
 
-          <p className="text-white/65 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+          <p className="text-white/65 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
             Haq Enterprises is a trusted printing company and packaging solutions provider in Pakistan, delivering premium corporate events, branded giveaways, and professional promotional products with flawless execution.
           </p>
 
@@ -47,24 +47,24 @@ export default function Hero() {
             {services.map((s) => (
               <span
                 key={s}
-                className="text-xs font-medium text-white/70 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3.5 py-1.5"
+                className="text-[10px] sm:text-xs font-medium text-white/70 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3.5 py-1.5"
               >
                 {s}
               </span>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <a
               href="#services"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#1d1d1f] text-sm font-bold hover:bg-white/90 transition-colors duration-200"
+              className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#1d1d1f] text-sm font-bold hover:bg-white/90 transition-colors duration-200"
             >
               Explore Services
               <ArrowRight size={15} />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/25 text-white text-sm font-semibold hover:bg-white/20 transition-colors duration-200"
+              className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/25 text-white text-sm font-semibold hover:bg-white/20 transition-colors duration-200"
             >
               Get a Quote
             </a>

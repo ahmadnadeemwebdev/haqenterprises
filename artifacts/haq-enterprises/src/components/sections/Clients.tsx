@@ -18,6 +18,7 @@ const tripled = [...clients, ...clients, ...clients];
 
 export default function Clients() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const isPausedRef = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -26,12 +27,15 @@ export default function Clients() {
     let raf: number;
 
     const tick = () => {
-      pos += 0.5;
-      const third = track.scrollWidth / 3;
-      if (pos >= third) pos = 0;
-      track.style.transform = `translateX(-${Math.round(pos)}px)`;
+      if (!isPausedRef.current) {
+        pos += 2.8; // faster leftward ticker motion
+        const third = track.scrollWidth / 3;
+        if (pos >= third) pos = 0;
+        track.style.transform = `translateX(-${Math.round(pos)}px)`;
+      }
       raf = requestAnimationFrame(tick);
     };
+
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, []);
@@ -60,6 +64,12 @@ export default function Clients() {
             ref={trackRef}
             className="flex items-center gap-5 will-change-transform"
             style={{ width: 'max-content' }}
+            onMouseEnter={() => {
+              isPausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              isPausedRef.current = false;
+            }}
           >
             {tripled.map((client, i) => (
               <div

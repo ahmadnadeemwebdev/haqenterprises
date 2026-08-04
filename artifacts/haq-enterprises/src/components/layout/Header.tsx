@@ -87,11 +87,30 @@ export default function Header() {
 
   const scrollToSection = (section: string) => {
     const target = document.querySelector(section) as HTMLElement | null;
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
+    if (!target) {
       console.warn(`[Header] Cannot scroll to missing section: ${section}`);
+      return;
     }
+
+    const start = window.pageYOffset;
+    const end = target.getBoundingClientRect().top + window.pageYOffset - SCROLL_OFFSET + 1;
+    const distance = end - start;
+    const duration = Math.max(80, Math.min(120, Math.abs(distance) * 0.07));
+    let startTime: number | null = null;
+
+    const ease = (t: number) => 1 - Math.pow(1 - t, 2); // sharp ease-out for speed
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      window.scrollTo(0, start + distance * ease(progress));
+      if (timeElapsed < duration) {
+        window.requestAnimationFrame(animate);
+      }
+    };
+
+    window.requestAnimationFrame(animate);
   };
 
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, section: string) => {
@@ -110,7 +129,7 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
         {/* Real HAQ Enterprises Logo */}
         <a
           href="#home"
@@ -120,7 +139,7 @@ export default function Header() {
           <img
             src="/images/haq-logo-transparent.png"
             alt="Haq Enterprises"
-            className={`h-20 md:h-24 w-auto object-contain transition-all duration-300 ${
+            className={`h-12 sm:h-14 md:h-18 w-auto object-contain transition-all duration-300 ${
               scrolled ? '' : 'filter invert brightness-200'
             }`}
             width={320}
@@ -156,7 +175,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 rounded-md transition-colors ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}
+          className={`md:hidden h-11 w-11 flex items-center justify-center rounded-full transition-colors ${scrolled ? 'text-[#1d1d1f]' : 'text-white'} hover:bg-white/10`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -168,8 +187,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white/85 backdrop-blur-2xl border-t border-black/5 shadow-lg" id="mobile-menu">
-          <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1" aria-label="Mobile navigation">
+        <div className="md:hidden absolute inset-x-0 top-full bg-white/96 backdrop-blur-2xl border-t border-black/5 shadow-lg z-40" id="mobile-menu">
+          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-2" aria-label="Mobile navigation">
             {navLinks.map((link) => {
             const isActive = activeSection === link.section;
             return (
@@ -178,8 +197,10 @@ export default function Header() {
                 href={link.section}
                 onClick={(event) => handleNavClick(event, link.section)}
                 aria-current={isActive ? 'page' : undefined}
-                className={`w-full text-left py-2.5 text-sm transition-colors duration-200 ${
-                  isActive ? 'font-semibold text-[#1d1d1f]' : 'text-[#1d1d1f] hover:text-[#1d1d1f]/60'
+                className={`w-full rounded-2xl px-4 py-3 text-base transition-colors duration-200 ${
+                  isActive
+                    ? 'font-semibold text-[#1d1d1f] bg-[#f4f4f5]'
+                    : 'text-[#1d1d1f] hover:text-[#1d1d1f]/70 hover:bg-black/5'
                 }`}
               >
                 {link.label}

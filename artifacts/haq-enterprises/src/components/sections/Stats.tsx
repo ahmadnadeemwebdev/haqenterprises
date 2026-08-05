@@ -49,9 +49,9 @@ export default function Stats() {
   return (
     <section className="bg-[#0f0f0f] py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="px-8 py-4 text-center first:pl-0 last:pr-0">
+            <div key={stat.label} className="flex flex-col items-center justify-center rounded-3xl border border-white/10 bg-white/5 px-6 py-8 text-center">
               <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-1">
                 <CountUp target={stat.value} suffix={stat.suffix} />
               </div>

@@ -28,7 +28,7 @@ export default function Clients() {
 
     const tick = () => {
       if (!isPausedRef.current) {
-        pos += 2.8; // faster leftward ticker motion
+        pos += 2.5;
         const third = track.scrollWidth / 3;
         if (pos >= third) pos = 0;
         track.style.transform = `translateX(-${Math.round(pos)}px)`;
@@ -54,7 +54,6 @@ export default function Clients() {
         </p>
       </div>
 
-      {/* Ticker */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-40 bg-linear-to-r from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-40 bg-linear-to-l from-[#f5f5f7] to-transparent z-10 pointer-events-none" />
@@ -62,7 +61,7 @@ export default function Clients() {
         <div className="overflow-hidden">
           <div
             ref={trackRef}
-            className="flex items-center gap-5 will-change-transform"
+            className="flex items-center gap-6 will-change-transform"
             style={{ width: 'max-content' }}
             onMouseEnter={() => {
               isPausedRef.current = true;
@@ -71,25 +70,20 @@ export default function Clients() {
               isPausedRef.current = false;
             }}
           >
-            {tripled.map((client, i) => (
+            {tripled.map((client, index) => (
               <div
-                key={i}
-                className="shrink-0 w-52 h-28 bg-white rounded-2xl border border-black/8 flex flex-col items-center justify-center gap-3 px-6 shadow-sm"
-                style={{ imageRendering: 'auto' }}
+                key={`${client.name}-${index}`}
+                className="shrink-0 flex h-28 w-52 items-center justify-center rounded-3xl bg-white border border-[#e5e7eb] p-4 shadow-sm"
               >
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="max-h-14 max-w-[160px] w-auto object-contain"
-                  style={{ imageRendering: 'auto', filter: 'none' }}
+                  className="max-h-14 max-w-full object-contain"
                   width={160}
                   height={56}
                   loading="lazy"
                   decoding="async"
                 />
-                <span className="text-[11px] font-semibold text-[#1d1d1f]/45 text-center leading-tight">
-                  {client.name}
-                </span>
               </div>
             ))}
           </div>

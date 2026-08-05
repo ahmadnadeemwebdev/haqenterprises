@@ -6,8 +6,8 @@ const services = [
   {
     title: 'Event Management',
     description: 'Complete event planning and seamless execution from start to finish. From intimate corporate gatherings to large-scale productions.',
-    srcJpg: '/images/event-1.jpg',
-    srcWebp: '/images/event-1.webp',
+    srcJpg: '/images/NBL08757.jpg',
+    srcWebp: '/images/NBL08757.jpg',
     tag: 'Core Service',
   },
   {

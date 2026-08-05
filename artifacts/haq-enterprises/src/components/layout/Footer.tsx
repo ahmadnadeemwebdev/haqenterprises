@@ -2,8 +2,19 @@
 // otherwise the `onError` fallback will show the existing white logo.
 
 const footerLinks = {
-  Services: ['Event Management', 'Conferences', 'Exhibitions', 'Product Launches', 'Customised Giveaways'],
-  Company: ['About Us', 'Our Clients', 'Corporate Events', 'Contact Us'],
+  Services: [
+    { label: 'Event Management', href: '#services' },
+    { label: 'Conferences', href: '#services' },
+    { label: 'Exhibitions', href: '#services' },
+    { label: 'Product Launches', href: '#services' },
+    { label: 'Customised Giveaways', href: '#giveaways' },
+  ],
+  Company: [
+    { label: 'About Us', href: '#about' },
+    { label: 'Our Clients', href: '#clients' },
+    { label: 'Corporate Events', href: '#events' },
+    { label: 'Contact Us', href: '#contact' },
+  ],
 };
 
 export default function Footer() {
@@ -39,9 +50,9 @@ export default function Footer() {
               <h4 className="text-sm font-semibold text-white mb-4">{title}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-white/55 text-sm hover:text-white/90 transition-colors duration-200">
-                      {link}
+                  <li key={link.label}>
+                    <a href={link.href} className="text-white/55 text-sm hover:text-white/90 transition-colors duration-200">
+                      {link.label}
                     </a>
                   </li>
                 ))}
